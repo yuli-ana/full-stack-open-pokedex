@@ -14,8 +14,9 @@ const useApi = (url, mapResults = (result) => result) => {
       .finally(() => setIsLoading(false))
   }, [url])
 
-  console.log(data)
-  return { data, isLoading, error }
-}
+  /* eslint-disable */
+  console.log(data);
+  return { data, isLoading, error };
+};
 
-export { useApi }
+export { useApi };
