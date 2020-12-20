@@ -25,34 +25,35 @@ const App = () => {
     return <ErrorMessage error={error} />
   }
 
-  console.log(pokemonList)
+  /* eslint-disable */
+  console.log(pokemonList);
 
   return (
     <Router>
       <Switch>
-        <Route exact path='/'>
+        <Route exact path="/">
           <PokemonList pokemonList={pokemonList} />
         </Route>
         <Route
-          path='/pokemon/:name'
+          path="/pokemon/:name"
           render={(routeParams) => {
             const pokemonId = pokemonList.find(
               ({ name }) => name === routeParams.match.params.name
-            ).id
-            const previous = pokemonList.find(({ id }) => id === pokemonId - 1)
-            const next = pokemonList.find(({ id }) => id === pokemonId + 1)
+            ).id;
+            const previous = pokemonList.find(({ id }) => id === pokemonId - 1);
+            const next = pokemonList.find(({ id }) => id === pokemonId + 1);
             return (
               <PokemonPage
                 pokemonList={pokemonList}
                 previous={previous}
                 next={next}
               />
-            )
+            );
           }}
         />
       </Switch>
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;
