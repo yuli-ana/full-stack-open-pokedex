@@ -26,5 +26,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "desolate-basin-11702"
           heroku_email: "korostovska@gmail.com"
-          healthcheck: "https://dashboard.heroku.com/apps/desolate-basin-11702/version"
+          healthcheck: "https://desolate-basin-11702.herokuapp.com/version"
           checkstring: "This is a new version, code has been updated yaay 🥳"
