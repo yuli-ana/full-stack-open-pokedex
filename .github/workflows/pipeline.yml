@@ -23,7 +23,8 @@ jobs:
         run: npm run test
       - uses: akhileshns/heroku-deploy@v3.7.8
         with: 
-           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-           heroku_app_name: "desolate-basin-11702"
-           heroku_email: "korostovska@gmail.com"
-           healthcheck: "https://dashboard.heroku.com/apps/desolate-basin-11702/health"
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "desolate-basin-11702"
+          heroku_email: "korostovska@gmail.com"
+          healthcheck: "https://dashboard.heroku.com/apps/desolate-basin-11702/version"
+          checkstring: "This is a new version, code has been updated yaay 🥳"
