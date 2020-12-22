@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  pull-request:
+    branches: [master]
+    types: [opened, synchronize]
 
 jobs:
   simple-deployment-pipeline:
@@ -22,6 +25,7 @@ jobs:
       - name: test
         run: npm run test
       - uses: akhileshns/heroku-deploy@v3.7.8
+        if: ${{ github.event_name == 'push' }}
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "desolate-basin-11702"
