@@ -5,13 +5,13 @@ on:
     branches:
       - master
 
-jobs: 
+jobs:
   simple-deployment-pipeline:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-        with: 
+        with:
           node-version: "12.x"
       - name: npm install
         run: npm install
@@ -22,9 +22,10 @@ jobs:
       - name: test
         run: npm run test
       - uses: akhileshns/heroku-deploy@v3.7.8
-        with: 
+        with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "desolate-basin-11702"
           heroku_email: "korostovska@gmail.com"
           healthcheck: "https://desolate-basin-11702.herokuapp.com/version"
           checkstring: "This is a new version, code has been updated yaay 🥳"
+          rollbackonhealthcheckfailed: true
