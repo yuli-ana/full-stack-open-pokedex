@@ -33,3 +33,10 @@ jobs:
           healthcheck: "https://desolate-basin-11702.herokuapp.com/version"
           checkstring: "This is a new version, code has been updated yaay 🥳"
           rollbackonhealthcheckfailed: true
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.33.0
+        if: ${{ github.event_name == 'push' }}
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            DEFAULT_BUMP: patch
