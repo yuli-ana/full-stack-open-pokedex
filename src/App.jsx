@@ -26,7 +26,7 @@ const App = () => {
   }
 
   /* eslint-disable */
-  // console.log(pokemonList);
+  console.log(pokemonList);
 
   return (
     <Router>
