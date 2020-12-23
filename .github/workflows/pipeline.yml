@@ -46,7 +46,7 @@ jobs:
           fields: workflow,job,commit,repo,ref,author,took
           custom_payload: |
           {
-            username: 'action-slack',
+            text: 'action-slack',
             icon_emoji: ':octocat:',
             attachments: [{
               color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
