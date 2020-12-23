@@ -5,7 +5,7 @@ const path = require('path')
 // Heroku dynamically sets a port
 const PORT = process.env.PORT || 5000
 
-app.use('/', express.static(path.join(__dirname, './build')))
+app.use('/', express.static(path.join(__dirname, './dist')))
 
 app.get('/health', (req, res) => {
   res.send('ok')
@@ -24,12 +24,12 @@ app.get('/version', (req, res) => {
 
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('./build'))
+  app.use(express.static('./dist'))
   // add this part if you are using React Router
   app.get('*', (req,res) => {
     /* eslint-disable */
-    console.log(path.join(__dirname+'/build/index.html'))
-    res.sendFile(path.join(__dirname+'/build/index.html'))
+    console.log(path.join(__dirname+'/dist/index.html'))
+    res.sendFile(path.join(__dirname+'/dist/index.html'))
   })
 }
 
