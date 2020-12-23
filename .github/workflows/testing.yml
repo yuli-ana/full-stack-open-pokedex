@@ -4,9 +4,7 @@ on:
   push:
     branches:
       - master
-  # pull_request:    
-  #   branches: [master]    
-  #   types: [opened, synchronize]
+
 
 jobs:
   a_test_job:
@@ -22,7 +20,7 @@ jobs:
           COMMITS: ${{ toJson(github.event.commits) }}
         run: echo "$COMMITS"
       - name: commit messages
-        # if: "!contains(toJSON(github.event.head_commit.message, 'ci skip')"
+        if: github.event_name == 'push' && contains(join(toJson(github.event.commits.*.message)), "#skip")
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
