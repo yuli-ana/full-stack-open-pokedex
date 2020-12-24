@@ -35,10 +35,10 @@ jobs:
           rollbackonhealthcheckfailed: true
       - uses: actions/checkout@v2
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.33.0
+        uses: anothrNick/github-tag-actio
         if: github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip')
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_ }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
       - uses: 8398a7/action-slack@v3.8.1
         with:
