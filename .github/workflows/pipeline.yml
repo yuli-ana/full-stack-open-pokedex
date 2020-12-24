@@ -45,7 +45,7 @@ jobs:
           status: custom
           channel: '#general'
           icon_emoji: ':octocat:'
-          fields: all
+          fields: workflow,job,commit,repo,ref,author,took,eventName
           custom_payload: |
             {
               username: 'action-slack',
@@ -57,3 +57,4 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
